@@ -27,27 +27,11 @@ public class UrlMaker4Hanhan implements UrlMaker {
     public UrlMaker4Hanhan() {
         this.init();
     }
-
-    // 汗汗漫画服务器列表
-    private void init() {
-        serverList[0] = "http://216.18.193.163:9393/dm01/";
-        serverList[1] = "http://216.18.193.163:9393/dm02/";
-        serverList[2] = "http://216.18.193.163:9393/dm03/";
-        serverList[3] = "http://216.18.193.163:9393/dm04/";
-        serverList[4] = "http://216.18.193.163:9393/dm05/";
-        serverList[5] = "http://216.18.193.163:9393/dm06/";
-        serverList[6] = "http://216.18.193.163:9393/dm07/";
-        serverList[7] = "http://216.18.193.163:9393/dm08/";
-        serverList[8] = "http://216.18.193.163:9393/dm09/";
-        serverList[9] = "http://216.18.193.163:9393/dm10/";
-        serverList[10] = "http://216.18.193.163:9393/dm11/";
-        serverList[11] = "http://216.18.193.163:9393/dm12/";
-        serverList[12] = "http://216.18.193.163:9393/dm13/";
-        serverList[13] = "http://8.8.8.8:99/dm14/";
-        serverList[14] = "http://216.18.193.163:9393/dm15/";
-        serverList[15] = "http://216.18.193.163:9393/dm16/";
-    }
-
+    /**
+     * 取得图片链接List
+     * @param url 网页链接
+     * @return 图片链接List
+     */
     public List<String> getUrlList(String url) {
         List<String> firstUrlList = this.getFirstUrl(url);
         return this.getUrlList(firstUrlList);
@@ -56,12 +40,9 @@ public class UrlMaker4Hanhan implements UrlMaker {
     /**
      * 汗汗漫画javascript解密方法
      * 
-     * @param enUrl
-     *            加密串
-     * @param key
-     *            解密用key
-     * @param serverUrl
-     *            服务器地址
+     * @param enUrl 加密串
+     * @param key 解密用key
+     * @param serverUrl 服务器地址
      * @return
      */
     private List<String> unsuan(String enUrl, String key, String serverUrl) {
@@ -116,15 +97,23 @@ public class UrlMaker4Hanhan implements UrlMaker {
         return urlList;
     }
 
-    // for test
-    public static void main(String[] args) {
-        
-//        UrlMaker4Hanhan tmp = new UrlMaker4Hanhan();
-//        List<String> firstUrlList = tmp.getFirstUrl("http://www.hhxiee.cc/comic/1811848/");
-//        System.out
-//                .println(tmp
-//                        .getUrlList("cemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmcrmrimcrmiamicmiamcwmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmitmrimcrmicmcwmiimiemcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmiamrimifmiemihmihmiemcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmihmrimitmcwmcwmiimiimcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmifmrimcrmicmihmiomicmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmicmrimcrmcwmiemiimicmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmiimrimcrmiomiomiemitmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmiomrimiamitmiimcrmcwmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcwmiemrimiimihmiemicmihmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmcwmrimiomihmiamcrmcwmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmcrmrimitmcwmiamihmiemcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmitmrimiomifmitmitmiamcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmiamrimcrmiomiomicmiomcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmihmrimcrmihmiimiimihmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmifmrimcrmifmcrmcwmitmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmicmrimiimiomiemiomicmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmiimrimiomitmitmcwmifmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmiomrimiamicmihmiemihmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmcrmiemrimcrmicmifmcwmiemcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmitmcwmrimicmicmcrmiimiomcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmitmcrmrimcrmiimiomicmcwmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmitmitmrimcrmiomiamiemcwmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmitmiamrimcrmiimihmiemihmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmitmihmrimcrmicmitmiomiomcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmitmifmrimcrmiemiimcwmicmcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmitmicmrimcrmitmcwmiamiomcomecmwtmeamahcmcemaaamatemcimrrmaaamatrmatimrrmcwmicmcemwcmcemwcmatimremaatmormwhmaaamaatmatfmrtmatcmatimwematamaatmcemaawmaaamatwmrimcwmcwmcrmcemiemiemiimiimcwmrimcwmcwmitmiimrimcrmcrmihmitmcwmcomecmwtmea"));
+    // 汗汗漫画服务器列表
+    private void init() {
+        serverList[0] = "http://216.18.193.163:9393/dm01/";
+        serverList[1] = "http://216.18.193.163:9393/dm02/";
+        serverList[2] = "http://216.18.193.163:9393/dm03/";
+        serverList[3] = "http://216.18.193.163:9393/dm04/";
+        serverList[4] = "http://216.18.193.163:9393/dm05/";
+        serverList[5] = "http://216.18.193.163:9393/dm06/";
+        serverList[6] = "http://216.18.193.163:9393/dm07/";
+        serverList[7] = "http://216.18.193.163:9393/dm08/";
+        serverList[8] = "http://216.18.193.163:9393/dm09/";
+        serverList[9] = "http://216.18.193.163:9393/dm10/";
+        serverList[10] = "http://216.18.193.163:9393/dm11/";
+        serverList[11] = "http://216.18.193.163:9393/dm12/";
+        serverList[12] = "http://216.18.193.163:9393/dm13/";
+        serverList[13] = "http://8.8.8.8:99/dm14/";
+        serverList[14] = "http://216.18.193.163:9393/dm15/";
+        serverList[15] = "http://216.18.193.163:9393/dm16/";
     }
-    
-    
 }
