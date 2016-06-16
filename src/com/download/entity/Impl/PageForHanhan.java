@@ -9,7 +9,7 @@ public class PageForHanhan extends Page {
     public PageForHanhan(String[] pageInfo) {
         super();
         this.pageInfo = pageInfo;
-        setPageName(pageInfo[9]);
+        setPageName(pageInfo[pageInfo.length - 1]);
     }
     
     public String getUrl() {
