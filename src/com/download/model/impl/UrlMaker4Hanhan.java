@@ -14,7 +14,7 @@ import org.jsoup.select.Elements;
 import com.download.model.UrlMaker;
 
 public class UrlMaker4Hanhan implements UrlMaker {
-
+    
     /**
      * 解密用key
      */
@@ -27,6 +27,7 @@ public class UrlMaker4Hanhan implements UrlMaker {
     public UrlMaker4Hanhan() {
         this.init();
     }
+    
     /**
      * 取得图片链接List
      * @param url 网页链接
@@ -36,7 +37,7 @@ public class UrlMaker4Hanhan implements UrlMaker {
         List<String> firstUrlList = this.getFirstUrl(url);
         return this.getUrlList(firstUrlList);
     }
-
+    
     /**
      * 汗汗漫画javascript解密方法
      * 
@@ -69,8 +70,12 @@ public class UrlMaker4Hanhan implements UrlMaker {
         try {
             Document doc = Jsoup.parse(new URL(url), 5000);
             Elements elements = doc.getElementsByAttributeValue("target", "_blank");
-            for (Element element : elements) {
-                firstUrlList.add(webUrl.concat(element.attr("href")));
+            if (elements == null || elements.isEmpty()) {
+                firstUrlList.add(url);
+            } else {
+                for (Element element : elements) {
+                    firstUrlList.add(webUrl.concat(element.attr("href")));
+                }
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
