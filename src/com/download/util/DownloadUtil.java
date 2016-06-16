@@ -38,6 +38,7 @@ public class DownloadUtil {
             if (!file.exists())
                 file.mkdirs();
             if (checkFileExists(file.getPath() + File.separator + fileName)) {
+                System.out.println(file.getPath() + File.separator + fileName);
                 System.out.println("文件已存在");
                 return;
             }
