@@ -2,8 +2,14 @@ package com.download.entity;
 
 public class Page {
 
+    /**
+     * url
+     */
     private String url = null;
 
+    /**
+     * 页名
+     */
     private String pageName = null;
 
     public String getUrl() {

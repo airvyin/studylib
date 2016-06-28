@@ -9,7 +9,7 @@ import com.download.model.BookMaker;
 public class BookMaker4Hanhan implements BookMaker {
 
     /**
-     * 解析url生成book
+     * 鏍规嵁url鐢熸垚book
      */
     public Book getBook(List<String> urlList) {
         if (urlList == null || urlList.isEmpty()) {
@@ -27,10 +27,10 @@ public class BookMaker4Hanhan implements BookMaker {
         return book;
     }
 
-    public static void main(String[] args) {
-        String[] tmp = "http://216.18.193.163:9393/dm06//ok-comic06/T/TianERongZhiWen/vol_001/99770_0001_13630.JPG".split("/");
-        for (String str : tmp) {
-            System.out.println(str);
-        }
-    }
+//    public static void main(String[] args) {
+//        String[] tmp = "http://216.18.193.163:9393/dm06//ok-comic06/T/TianERongZhiWen/vol_001/99770_0001_13630.JPG".split("/");
+//        for (String str : tmp) {
+//            System.out.println(str);
+//        }
+//    }
 }

@@ -16,12 +16,10 @@ import com.download.model.UrlMaker;
 public class UrlMaker4Hanhan implements UrlMaker {
     
     /**
-     * ½âÃÜÓÃkey
+     * è§£å¯†ç”¨key
      */
     private String key = "tahfcioewrm";
     
-    private String webUrl = "http://www.hhxiee.cc";
-
     private String[] serverList = new String[16];
 
     public UrlMaker4Hanhan() {
@@ -29,9 +27,9 @@ public class UrlMaker4Hanhan implements UrlMaker {
     }
     
     /**
-     * È¡µÃÍ¼Æ¬Á´½ÓList
-     * @param url ÍøÒ³Á´½Ó
-     * @return Í¼Æ¬Á´½ÓList
+     * å–å¾—å›¾ç‰‡é“¾æ¥List
+     * @param url ç½‘é¡µé“¾æ¥
+     * @return å›¾ç‰‡é“¾æ¥List
      */
     public List<String> getUrlList(String url) {
         List<String> firstUrlList = this.getFirstUrl(url);
@@ -39,11 +37,11 @@ public class UrlMaker4Hanhan implements UrlMaker {
     }
     
     /**
-     * º¹º¹Âş»­javascript½âÃÜ·½·¨
+     * æ±—æ±—æ¼«ç”»javascriptè§£å¯†æ–¹æ³•
      * 
-     * @param enUrl ¼ÓÃÜ´®
-     * @param key ½âÃÜÓÃkey
-     * @param serverUrl ·şÎñÆ÷µØÖ·
+     * @param enUrl åŠ å¯†ä¸²
+     * @param key è§£å¯†ç”¨key
+     * @param serverUrl æœåŠ¡å™¨åœ°å€
      * @return
      */
     private List<String> unsuan(String enUrl, String key, String serverUrl) {
@@ -67,6 +65,7 @@ public class UrlMaker4Hanhan implements UrlMaker {
     
     private List<String> getFirstUrl(String url) {
         List<String> firstUrlList = new ArrayList<String>();
+        String[] firstUrlStrs = url.split("/");
         try {
             Document doc = Jsoup.parse(new URL(url), 5000);
             Elements elements = doc.getElementsByAttributeValue("target", "_blank");
@@ -74,7 +73,7 @@ public class UrlMaker4Hanhan implements UrlMaker {
                 firstUrlList.add(url);
             } else {
                 for (Element element : elements) {
-                    firstUrlList.add(webUrl.concat(element.attr("href")));
+                    firstUrlList.add("http://".concat(firstUrlStrs[2]).concat(element.attr("href")));
                 }
             }
         } catch (MalformedURLException e) {
@@ -92,7 +91,7 @@ public class UrlMaker4Hanhan implements UrlMaker {
                 Document doc = Jsoup.parse(new URL(firstUrl), 5000);
                 Elements elements = doc.getElementsByAttributeValue("language", "javascript");
                 String[] enUrls = elements.get(0).data().split("\"");
-                urlList.addAll(this.unsuan(enUrls[1], key, serverList[Integer.parseInt(firstUrl.substring(firstUrl.indexOf("=") + 1)) - 1]));
+                urlList.addAll(this.unsuan(enUrls[enUrls.length - 2], key, serverList[Integer.parseInt(firstUrl.substring(firstUrl.indexOf("=") + 1)) - 1]));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -102,7 +101,7 @@ public class UrlMaker4Hanhan implements UrlMaker {
         return urlList;
     }
 
-    // º¹º¹Âş»­·şÎñÆ÷ÁĞ±í
+    // æ±—æ±—æ¼«ç”»æœåŠ¡å™¨åˆ—è¡¨
     private void init() {
         serverList[0] = "http://216.18.193.163:9393/dm01/";
         serverList[1] = "http://216.18.193.163:9393/dm02/";

@@ -16,39 +16,39 @@ import org.apache.http.util.EncodingUtils;
 public class PageAnalysiserUtil {
     
     /**
-     * ÏÂÔØÍøÒ³ÎÄ¼ş
+     * ä¸‹è½½ç½‘é¡µæ–‡ä»¶
      * 
-     * @param url Í¼Æ¬µÄurl
-     * @param savePath ±£´æÍ¼Æ¬µÄÂ·¾¶
+     * @param url å›¾ç‰‡çš„url
+     * @param savePath ä¿å­˜å›¾ç‰‡çš„è·¯å¾„
      */
     public void getPage(String urlString) {
         try {
-            // ¹¹ÔìURL
+            // æ„é€ URL
             URL url = new URL(urlString);
-            // ´ò¿ªÁ´½Ó
+            // æ‰“å¼€é“¾æ¥
             URLConnection urlConn = url.openConnection();
-            // ÉèÖÃÇëÇó³¬Ê±Ê±¼ä
+            // è®¾ç½®è¯·æ±‚è¶…æ—¶æ—¶é—´
             urlConn.setConnectTimeout(10 * 1000);
-            // ÊäÈëÁ÷
+            // è¾“å…¥æµ
             InputStream in = urlConn.getInputStream();
-            // 1kÊı¾İ»º³å
+            // 1kæ•°æ®ç¼“å†²
             byte[] bytes = new byte[1024];
-            // ¶ÁÈ¡µÄÊı¾İ³¤¶È
+            // è¯»å–çš„æ•°æ®é•¿åº¦
             int length = 0;
-            // Êä³öÎÄ¼ş
+            // è¾“å‡ºæ–‡ä»¶
             File file = new File("");
             if (!file.exists())
                 file.mkdirs();
-            // Êä³öÁ÷
+            // è¾“å‡ºæµ
             OutputStream out = new FileOutputStream("tempPage.html");
             
-            // ¿ªÊ¼¶ÁÈ¡
-            System.out.println("ÕıÔÚ»ñÈ¡µ±Ç°Ò³Ãæ:" + url);
+            // å¼€å§‹è¯»å–
+            System.out.println("æ­£åœ¨è·å–å½“å‰é¡µé¢:" + url);
             while ((length = in.read(bytes)) != -1) {
                 out.write(bytes, 0, length);
             }
-            System.out.println("Ò³Ãæ»ñÈ¡½áÊø");
-            // Íê±Ï£¬¹Ø±ÕËùÓĞÁ´½Ó
+            System.out.println("é¡µé¢è·å–ç»“æŸ");
+            // å®Œæ¯•ï¼Œå…³é—­æ‰€æœ‰é“¾æ¥
             in.close();
             out.close();
         } catch (MalformedURLException e) {
@@ -63,10 +63,10 @@ public class PageAnalysiserUtil {
     }
 
     /**
-     * »ñÈ¡ÍøÒ³htmlÄÚÈİ
+     * è·å–ç½‘é¡µhtmlå†…å®¹
      * 
-     * @param urlString ÍøÒ³Á´½Ó
-     * @return htmlÄÚÈİ×Ö·û´®
+     * @param urlString ç½‘é¡µé“¾æ¥
+     * @return htmlå†…å®¹å­—ç¬¦ä¸²
      */
     public String getHtmlString(String urlString) {
         

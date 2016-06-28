@@ -13,57 +13,69 @@ import java.net.URLConnection;
 
 public class DownloadUtil {
     
+    public static String FILE_EXIST = "æ–‡ä»¶å·²å­˜åœ¨";
+    
     /**
-     * ÏÂÔØÍ¼Æ¬
+     * ä¸‹è½½å›¾ç‰‡
      * 
-     * @param url Í¼Æ¬µÄurl
-     * @param savePath ±£´æÍ¼Æ¬µÄÂ·¾¶
+     * @param url å›¾ç‰‡çš„url
+     * @param savePath ä¿å­˜å›¾ç‰‡çš„è·¯å¾„
      */
     public void downloadImg(String urlString, String savePath, String fileName) {
+        File pageFile = new File(savePath + File.separator + fileName);
+        if (pageFile.exists()) {
+            System.out.println(FILE_EXIST + pageFile.getPath());
+            return;
+        }
+        InputStream in = null;
+        OutputStream out = null;
         try {
-            // ¹¹ÔìURL
+            // æ„é€ URL
             URL url = new URL(urlString);
-            // ´ò¿ªÁ´½Ó
+            // æ‰“å¼€é“¾æ¥
             URLConnection urlConn = url.openConnection();
-            // ÉèÖÃÇëÇó³¬Ê±Ê±¼ä
+            // è®¾ç½®è¯·æ±‚è¶…æ—¶æ—¶é—´
             urlConn.setConnectTimeout(10 * 1000);
-            // ÊäÈëÁ÷
-            InputStream in = urlConn.getInputStream();
-            // 1kÊı¾İ»º³å
+            // è¾“å…¥æµ
+            in = urlConn.getInputStream();
+            // 1kæ•°æ®ç¼“å†²
             byte[] bytes = new byte[1024];
-            // ¶ÁÈ¡µÄÊı¾İ³¤¶È
+            // è¯»å–çš„æ•°æ®é•¿åº¦
             int length = 0;
-            // Êä³öÎÄ¼ş
-            File file = new File(savePath);
-            if (!file.exists())
-                file.mkdirs();
-            if (checkFileExists(file.getPath() + File.separator + fileName)) {
-                System.out.println(file.getPath() + File.separator + fileName);
-                System.out.println("ÎÄ¼şÒÑ´æÔÚ");
-                return;
-            }
-            // Êä³öÁ÷
-            OutputStream out = new FileOutputStream(file.getPath() + File.separator + fileName);
+            // æ–‡ä»¶å¤¹
+            File fileDir = new File(savePath);
+            if (!fileDir.exists())
+                fileDir.mkdirs();
+            // è¾“å‡ºæµ
+            out = new FileOutputStream(pageFile);
             
-            // ¿ªÊ¼¶ÁÈ¡
-            System.out.println("ÕıÔÚÖ´ĞĞÏÂÔØÈÎÎñ£ºµ±Ç°ÕıÔÚÏÂÔØÍ¼Æ¬:" + url);
+            // å¼€å§‹è¯»å–
+            System.out.println("æ­£åœ¨æ‰§è¡Œä¸‹è½½ä»»åŠ¡ï¼šå½“å‰æ­£åœ¨ä¸‹è½½å›¾ç‰‡:" + url);
             while ((length = in.read(bytes)) != -1) {
                 out.write(bytes, 0, length);
             }
-            System.out.println("µ±Ç°Í¼Æ¬½áÊø");
-            // Íê±Ï£¬¹Ø±ÕËùÓĞÁ´½Ó
-            in.close();
-            out.close();
+            System.out.println("å½“å‰å›¾ç‰‡ç»“æŸ");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            // å®Œæ¯•ï¼Œå…³é—­æ‰€æœ‰é“¾æ¥
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (IOException e) {
+                in = null;
+            }
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                out = null;
+            }
         }
-    }
-    
-    public boolean checkFileExists(String filePath) {
-        File file = new File(filePath);
-        return file.exists();
     }
     
     public static void main (String[] args) {
@@ -78,13 +90,13 @@ public class DownloadUtil {
             
             File file = new File(path);
             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file));
-            System.out.println("ÕıÔÚÖ´ĞĞÏÂÔØÈÎÎñ£ºµ±Ç°ÕıÔÚÏÂÔØÍ¼Æ¬:" + url);
+            System.out.println("ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ£ºµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬:" + url);
             byte[] data = new byte[1024];
             int length = 0;
             while((length=in.read(data)) != -1) {
                 out.write(data, 0, length);
             }
-            System.out.println("½áÊø");
+            System.out.println("ï¿½ï¿½ï¿½ï¿½");
             in.close();
             out.close();
         } catch (MalformedURLException e) {
