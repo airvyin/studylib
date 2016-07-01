@@ -9,6 +9,8 @@ import com.download.model.UrlMaker;
 import com.download.model.impl.BookMaker4Hanhan;
 import com.download.model.impl.Downloader4Hanhan;
 import com.download.model.impl.UrlMaker4Hanhan;
+import com.download.util.Contents;
+import com.download.util.PropertyUtil;
 import com.download.util.ReadFileUtil;
 
 public class DownloadAction {
@@ -60,11 +62,12 @@ public class DownloadAction {
         testAction.setUrlMaker(new UrlMaker4Hanhan());
         testAction.setBookMaker(new BookMaker4Hanhan());
         testAction.setDownloader(new Downloader4Hanhan());
-        
+
         if (args != null && args.length > 0) {
             testAction.doDownload(args[0]);
         } else {
-            List<String> urlList = ReadFileUtil.readFile("C:\\Users\\yintw\\Pictures\\comics\\20160621.txt");
+            List<String> urlList = ReadFileUtil
+                    .readFile(Contents.TASK_FILE_PATH + PropertyUtil.getProperties(Contents.TASK_FILE_NAME));
             for (String url : urlList) {
                 testAction.doDownload(url);
             }

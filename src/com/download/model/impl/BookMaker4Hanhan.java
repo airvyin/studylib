@@ -1,5 +1,6 @@
 package com.download.model.impl;
 
+import java.io.File;
 import java.util.List;
 
 import com.download.entity.Book;
@@ -16,21 +17,15 @@ public class BookMaker4Hanhan implements BookMaker {
             return null;
         }
         Book book = new BookFromHanhan();
-        String[] singlePageInfo = urlList.get(0).split("/");
+        String[] singlePageInfo = urlList.get(0).split(File.separator);
         book.setName(singlePageInfo[7]);
         
         for (String url : urlList) {
-            singlePageInfo = url.split("/");
+            singlePageInfo = url.split(File.separator);
             book.addPage(singlePageInfo);
         }
         
         return book;
     }
 
-//    public static void main(String[] args) {
-//        String[] tmp = "http://216.18.193.163:9393/dm06//ok-comic06/T/TianERongZhiWen/vol_001/99770_0001_13630.JPG".split("/");
-//        for (String str : tmp) {
-//            System.out.println(str);
-//        }
-//    }
 }

@@ -1,5 +1,6 @@
 package com.download.model.impl;
 
+import java.io.File;
 import java.sql.Date;
 
 import com.download.entity.Book;
@@ -17,8 +18,8 @@ public class Downloader4Hanhan implements Downloader {
         Date startTime = new Date(System.currentTimeMillis());
         int downloadedPageCount = 0;
         for (Chapter chapter : book.getChapters()) {
-            String savePath = PropertyUtil.getProperties("savepath").concat("/").concat(book.getName()).concat("/")
-                    .concat(chapter.getName());
+            String savePath = PropertyUtil.getProperties("savePath").concat(File.separator).concat(book.getName())
+                    .concat(File.separator).concat(chapter.getName());
             for (Page page : chapter.getPages()) {
                 downloadUtil.downloadImg(page.getUrl(), savePath, page.getPageName());
                 downloadedPageCount++;

@@ -44,9 +44,4 @@ public class ReadFileUtil {
         }
         return urlList;
     }
-    
-    public static void main(String[] args) {
-        String filePath = "C:\\Users\\yintw\\Desktop\\±à¼­2.TXT";
-        readFile(filePath);
-    }
 }

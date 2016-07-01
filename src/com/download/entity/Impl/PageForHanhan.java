@@ -1,5 +1,7 @@
 package com.download.entity.Impl;
 
+import java.io.File;
+
 import com.download.entity.Page;
 
 public class PageForHanhan extends Page {
@@ -20,7 +22,7 @@ public class PageForHanhan extends Page {
         StringBuilder sb = new StringBuilder();
         for (String str : pageInfo) {
             sb.append(str);
-            sb.append("/");
+            sb.append(File.separator);
         }
         setUrl(sb.substring(0, sb.length() - 1));
     }
