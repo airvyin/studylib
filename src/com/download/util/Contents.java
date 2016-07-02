@@ -8,4 +8,6 @@ public interface Contents {
             + "Pictures" + File.separator + "comics" + File.separator + "20160621.txt";
 
     public final String TASK_FILE_NAME = "taskFileName";
+    
+    public final String URL_SEPARATOR = "/";
 }

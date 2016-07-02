@@ -90,13 +90,11 @@ public class DownloadUtil {
             
             File file = new File(path);
             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file));
-            System.out.println("����ִ���������񣺵�ǰ��������ͼƬ:" + url);
             byte[] data = new byte[1024];
             int length = 0;
             while((length=in.read(data)) != -1) {
                 out.write(data, 0, length);
             }
-            System.out.println("����");
             in.close();
             out.close();
         } catch (MalformedURLException e) {

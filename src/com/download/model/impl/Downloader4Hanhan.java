@@ -22,9 +22,9 @@ public class Downloader4Hanhan implements Downloader {
                     .concat(File.separator).concat(chapter.getName());
             for (Page page : chapter.getPages()) {
                 downloadUtil.downloadImg(page.getUrl(), savePath, page.getPageName());
+                System.out.println("预计剩余时间：" + getLeftTime(book, downloadedPageCount, startTime) + "分");
                 downloadedPageCount++;
             }
-            System.out.println("预计剩余时间：" + getLeftTime(book, downloadedPageCount, startTime));
         }
         System.out.println("全部结束");
     }

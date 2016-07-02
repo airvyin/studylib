@@ -1,11 +1,11 @@
 package com.download.model.impl;
 
-import java.io.File;
 import java.util.List;
 
 import com.download.entity.Book;
 import com.download.entity.Impl.BookFromHanhan;
 import com.download.model.BookMaker;
+import com.download.util.Contents;
 
 public class BookMaker4Hanhan implements BookMaker {
 
@@ -17,11 +17,11 @@ public class BookMaker4Hanhan implements BookMaker {
             return null;
         }
         Book book = new BookFromHanhan();
-        String[] singlePageInfo = urlList.get(0).split(File.separator);
+        String[] singlePageInfo = urlList.get(0).split(Contents.URL_SEPARATOR);
         book.setName(singlePageInfo[7]);
         
         for (String url : urlList) {
-            singlePageInfo = url.split(File.separator);
+            singlePageInfo = url.split(Contents.URL_SEPARATOR);
             book.addPage(singlePageInfo);
         }
         
