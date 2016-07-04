@@ -9,11 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.download.entity.Book;
-import com.download.entity.Chapter;
-import com.download.entity.Page;
-import com.download.entity.Impl.BookFromHanhan;
-
 public class BaseDao implements Dao {
     
     private static SqlSessionFactory sqlSessionFactory = null;
