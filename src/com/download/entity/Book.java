@@ -1,9 +1,15 @@
 package com.download.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class Book {
+    
+    /**
+     * id
+     */
+    private Long bookId = null;
 
     /**
      * 书名
@@ -18,7 +24,7 @@ public abstract class Book {
     /**
      * 连载状态：连载/完结
      */
-    private String status = null;
+    private Integer status = null;
     
     /**
      * 封面
@@ -28,12 +34,39 @@ public abstract class Book {
     /**
      * 类型
      */
-    private String type = null;
+    private Integer type = null;
     
     /**
      * 简介
      */
     private String introduction = null;
+    
+    /**
+     * path
+     */
+    private String path = null;
+    
+    /**
+     * createDate
+     */
+    private Date createDate = null;
+    
+    /**
+     * createUser
+     */
+    private String createUser = null;
+    
+    
+    /**
+     * updateDate
+     */
+    private Date updateDate = null;
+    
+    
+    /**
+     * updateUser
+     */
+    private String updateUser = null;
 
     /**
      * 章节List
@@ -73,6 +106,23 @@ public abstract class Book {
         }
         return totalPageCount;
     }
+    
+    /**
+     * 根据章节名取得章节
+     * 
+     * @param chapterName 章节名
+     * @return 章节
+     */
+    public Chapter getChapter(String chapterName) {
+        for (Chapter chapter : getChapters()) {
+            if (chapterName.equals(chapter.getName())) {
+                return chapter;
+            }
+        }
+        Chapter chapter = new Chapter(chapterName);
+        this.getChapters().add(chapter);
+        return chapter;
+    }
 
     public String getName() {
         return name;
@@ -102,11 +152,11 @@ public abstract class Book {
         this.authorName = authorName;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -118,11 +168,11 @@ public abstract class Book {
         this.cover = cover;
     }
 
-    public String getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -132,5 +182,53 @@ public abstract class Book {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
+    }
+
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }
