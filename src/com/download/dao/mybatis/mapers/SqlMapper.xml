@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.download.entity.SqlMapper">
+	<select id="selectBook" parameterType="com.download.entity.Book"
+		resultType="com.download.entity.Book">
+		select * from book
+	</select>
+	<insert id="insertBook" parameterType="com.download.entity.Book">
+		insert into Book (
+		BOOK_ID,
+		NAME,
+		AUTHORNAME,
+		STATUS,
+		COVER,
+		TYPE,
+		INTRODUCTION,
+		PATH,
+		CREATE_DATE,
+		UPDATE_DATE,
+		CREATE_USER,
+		UPDATE_USER)
+		values (
+		BOOK_ID_SEQ.nextval,
+		#{name,jdbcType=VARCHAR},
+		#{authorName,jdbcType=VARCHAR},
+		#{status,jdbcType=NUMERIC},
+		#{cover,jdbcType=VARCHAR},
+		#{type,jdbcType=NUMERIC},
+		#{introduction,jdbcType=VARCHAR},
+		#{path,jdbcType=VARCHAR},
+		sysdate,
+		sysdate,
+		#{createUser,jdbcType=VARCHAR},
+		#{updateUser,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertChapter" parameterType="com.download.entity.Chapter">
+		insert into Chapter (
+		CHAPTER_ID,
+		BOOK_ID,
+		CREATE_USER,
+		CREATE_DATE,
+		UPDATE_USER,
+		UPDATE_DATE,
+		ORDER_VALUE)
+		values (
+		CHAPTER_ID_SEQ.nextval,
+		#{bookId,jdbcType=NUMERIC},
+		#{createUser,jdbcType=VARCHAR},
+		sysdate,
+		#{updateUser,jdbcType=VARCHAR},
+		sysdate,
+		#{orderValue,jdbcType=NUMERIC})
+	</insert>
+	<insert id="insertPage" parameterType="com.download.entity.Page">
+		insert into Page (
+		PAGE_ID,
+		CHAPTER_ID,
+		FILE_PATH,
+		CREATE_USER,
+		CREATE_DATE,
+		UPDATE_USER,
+		UPDATE_DATE,
+		ORDER_VALUE)
+		values (
+		PAGE_ID_SEQ.nextval,
+		#{chapterId,jdbcType=NUMERIC},
+		#{filePath,jdbcType=VARCHAR},
+		#{createUser,jdbcType=VARCHAR},
+		sysdate,
+		#{updateUser,jdbcType=VARCHAR},
+		sysdate,
+		#{orderValue,jdbcType=NUMERIC})
+	</insert>
+</mapper>
